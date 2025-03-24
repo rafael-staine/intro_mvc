@@ -138,6 +138,18 @@
         },
       ];
 
+      const alunoService = new AlunoService();
+      alunos.forEach((aluno) => {
+        alunoService.add(new AlunosModel(aluno));
+      });
+      const paramsString = window.location.search;
+      console.log(paramsString);
+      const URLParamas = new URLSearchParams(paramsString);
+      const alunoId = parseInt(URLParamas.get("id"));
+      console.log(alunoId);
+      let aluno = alunoService.searchById(alunoId);
+      console.log(aluno);
+
     </script>
   </body>
 </html>

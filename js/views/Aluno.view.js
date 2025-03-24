@@ -1,4 +1,4 @@
-class AlunoViews {
+class AlunoView {
     constructor(table) {
         this.tableList = table
         this.tableHeader = this.tableList.querySelector('thead')

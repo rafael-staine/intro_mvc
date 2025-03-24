@@ -1,6 +1,6 @@
 class AlunoController {
     constructor(service, view) {
-        view.renderHeader(service.alunos)
+        view.render(service.alunos)
         this.view = view
         this.service = service
     }

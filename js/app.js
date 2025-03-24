@@ -34,8 +34,8 @@ alunos.forEach(aluno => {
   alunoService.add(new AlunosModel(aluno))
 })
 
-const alunoViews = new AlunoViews(document.querySelector('[data-table-alunos]'))
-const alunoController = new AlunoController(alunoService, alunoViews)
+const alunoView = new AlunoView(document.querySelector('[data-table-alunos]'))
+const alunoController = new AlunoController(alunoService, alunoView)
 
 document.querySelector('form').addEventListener('submit', (event) => {
   event.preventDefault()
