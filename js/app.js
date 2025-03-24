@@ -28,11 +28,17 @@ const alunos = [
   },
 ];
 
-const AlunoService = new AlunoService()
+const alunoService = new AlunoService()
 
 alunos.forEach(aluno => {
-  AlunoService.add(new AlunoModel(aluno))
+  alunoService.add(new AlunosModel(aluno))
 })
 
-const AlunoViews = new AlunoView(document.querySelector('[data-table-alunos]'))
-const alunoController = new AlunoController(AlunoService, AlunoViews)
+const alunoViews = new AlunoViews(document.querySelector('[data-table-alunos]'))
+const alunoController = new AlunoController(alunoService, alunoViews)
+
+document.querySelector('form').addEventListener('submit', (event) => {
+  event.preventDefault()
+  const nome = document.getElementById('first_name').value;
+  alunoController.add({ nome })
+})

@@ -3,28 +3,48 @@ class AlunoViews {
         this.tableList = table
         this.tableHeader = this.tableList.querySelector('thead')
         this.tableBody = this.tableList.querySelector('tbody')
-        this.matertias = ["backend_1", "frontend_2", "bancodados", "ferramentas"]
+        this.materias = ["backend_1", "frontend_2", "bancodados", "ferramentas"]
 
-        this.tableHeader()
+        this.renderHeader()
     }
 
     renderHeader() {
-        const header = document.createElement('tr')
-        hmtlHeader.innerHTML = '<td>Nome</td>'
-        const hmtlHeaderMaterias = this.matertias.map(materia => {
+        const htmlHeader = document.createElement('tr')
+        htmlHeader.innerHTML = '<td>Nome</td>'
+        const hmtlHeaderMaterias = this.materias.map(materia => {
             return `<td>${materia}</td>`
         }).join('')
-        hmtlHeader.innerHTML += hmtlHeaderMaterias
-        this.tableHeader.appendChild(hmtlHeader)
+        htmlHeader.innerHTML += hmtlHeaderMaterias
+        this.tableHeader.appendChild(htmlHeader)
     }
 
     render(alunos) {
+        this.tableBody.innerHTML = ''
         alunos.forEach(aluno => {
             let htmlRow = document.createElement('tr')
             htmlRow.innerHTML = `<td>${aluno.nome}</td>`
-            this.matertias.forEach(materia => {
-                htmlRow.innerHTML += `<td>${aluno.media[materia]}</td>`
+            let encontrado = false
+            this.materias.forEach(materia => {
+                if (materia in aluno.notas) {
+                    encontrado = true
+                }
             })
+
+            if (encontrado) {
+                this.materias.forEach(materia => {
+                    htmlRow.innerHTML += `<td>
+                    ${aluno.media[materia] !== undefined ? aluno.media[materia] :
+                            `<a href="edit.html?id=${aluno._id}Incluir Nota</a>`}
+                    </td>`
+                })
+            } else {
+                htmlRow.innerHTML += `<td colspan="${this.materias.length}">
+                    <a href="edit.html?id=${aluno._id}">
+                         Incluir Notas
+                    </a>
+                </td>`
+            }
+
             this.tableBody.appendChild(htmlRow)
         })
     }
