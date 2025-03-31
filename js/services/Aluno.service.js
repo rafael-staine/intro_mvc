@@ -5,11 +5,11 @@ class AlunoService {
     }
 
     add(aluno) {
-        if (!aluno instanceof AlunosModel) {
+        if (!aluno instanceof AlunoModel) {
             throw new Error('O aluno deve ser uma instância de AlunoModel')
         }
         this.alunos.push(aluno)
-        this.updateLocalStorage
+        this.updateLocalStorage()
     }
 
     update(aluno) {
@@ -32,7 +32,7 @@ class AlunoService {
             alunos = JSON.parse(local)
         }
         alunos.forEach(aluno => {
-            this.add(new AlunosModel(aluno))
+            this.add(new AlunoModel(aluno))
         });
     }
 }   

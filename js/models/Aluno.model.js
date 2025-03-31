@@ -1,4 +1,4 @@
-class AlunosModel {
+class AlunoModel {
     constructor({ nome, _id, notas } = { notas: {} }) {
         this.nome = nome
         this._id = _id !== undefined ? _id : this.generateId();
@@ -16,4 +16,4 @@ class AlunosModel {
     }
 }
 
-AlunosModel.maxId = 0
+AlunoModel.maxId = 0
