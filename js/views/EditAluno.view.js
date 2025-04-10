@@ -1,7 +1,7 @@
 class EditAlunoView {
     constructor(form, materias) {
         this.form = form;
-        this.container = form.querySelector("[data-edit-aluno]");
+        this.container = form.querySelector("[data-edit-notas]");
         this.materias = materias;
     }
 
@@ -17,7 +17,7 @@ class EditAlunoView {
                         value="${materia.nome}"
                         disabled
                     />
-                <div>
+                </div>
                 <div class="input-field col s2">
                     <input
                         data-bimestre="0"
@@ -27,7 +27,7 @@ class EditAlunoView {
                         step="0.5"
                         value="${aluno.notas[materia._id]?.[0]??''}"
                     />
-                <div>
+                </div>
                 <div class="input-field col s2">
                     <input
                         data-bimestre="1"
@@ -35,9 +35,9 @@ class EditAlunoView {
                         type="number"
                         class="validate"
                         step="0.5"
-                        value="${aluno.notas[materia._id]?.[0]??''}"
+                        value="${aluno.notas[materia._id]?.[1]??''}"
                     />
-                <div>
+                </div>
                 <div class="input-field col s2">
                     <input
                         data-bimestre="2"
@@ -45,9 +45,9 @@ class EditAlunoView {
                         type="number"
                         class="validate"
                         step="0.5"
-                        value="${aluno.notas[materia._id]?.[0]??''}"
+                        value="${aluno.notas[materia._id]?.[2]??''}"
                     />
-                <div>
+                </div>
                 <div class="input-field col s2">
                     <input
                         data-bimestre="3"
@@ -55,11 +55,12 @@ class EditAlunoView {
                         type="number"
                         class="validate"
                         step="0.5"
-                        value="${aluno.notas[materia._id]?.[0]??''}"
+                        value="${aluno.notas[materia._id]?.[3]??''}"
                     />
-                <div>
+                </div>
             </div>`
         ).join("");
        this.container.innerHTML = html;
     }
 }
+

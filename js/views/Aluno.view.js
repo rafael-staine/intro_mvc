@@ -11,10 +11,10 @@ class AlunoView {
     renderHeader() {
         const htmlHeader = document.createElement('tr')
         htmlHeader.innerHTML = '<td>Nome</td>'
-        const hmtlHeaderMaterias = this.materias.map(materia => {
+        const htmlHeaderMaterias = this.materias.map(materia => {
             return `<td>${materia.nome}</td>`
         }).join('')
-        htmlHeader.innerHTML += hmtlHeaderMaterias
+        htmlHeader.innerHTML += htmlHeaderMaterias
         this.tableHeader.appendChild(htmlHeader)
     }
 
@@ -32,17 +32,20 @@ class AlunoView {
 
             if (encontrado) {
                 this.materias.forEach(materia => {
-                    htmlRow.innerHTML += `<td>
-                    ${aluno.media[materia._id] !== undefined ? aluno.media[materia] :
-                            `<a href="edit.html?id=${aluno._id}Incluir Nota</a>`}
-                    </td>`
+                    const td = document.createElement('td')
+                    td.innerHTML = (
+                            aluno.media[materia._id] !== undefined && 
+                            !Number.isNaN(aluno.media[materia._id])
+                        ) ?
+                        aluno.media[materia._id] :
+                        `<a href="edit.html?id=${aluno._id}">Incluir Nota</a>`
+                    htmlRow.appendChild(td)
                 })
             } else {
-                htmlRow.innerHTML += `<td colspan="${this.materias.length}">
-                    <a href="edit.html?id=${aluno._id}">
-                         Incluir Notas
-                    </a>
-                </td>`
+                const td = document.createElement('td')
+                td.colSpan = this.materias.length
+                td.innerHTML += `<a href="edit.html?id=${aluno._id}">Incluir Notas</a>`
+                htmlRow.appendChild(td)
             }
 
             this.tableBody.appendChild(htmlRow)

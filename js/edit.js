@@ -34,6 +34,6 @@ document.querySelector("form").addEventListener("submit", (e) => {
             notas[row.getAttribute("data-materia")] = []
         }
     })
-    editAlunoController.updadte(id, nome, notas)
+    editAlunoController.update(alunoId, nome, notas)
     window.location.href = "index.html"
 })  
