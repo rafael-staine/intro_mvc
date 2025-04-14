@@ -1,84 +1,105 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.css"
+      media="screen,projection"
+    />
 
-<head>
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+      h1 {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .underlined {
+        border-bottom: 3px solid currentColor;
+      }
 
-  <style type="text/css">
-    h1 {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
+      .reproved {
+        background-color: red;
+      }
 
-    .underlined {
-      border-bottom: 3px solid currentColor;
-    }
+      .aproved {
+        background-color: green;
+      }
 
-    .reproved {
-      background-color: red;
-    }
+      .form-add {
+        background: #e3ecec;
+        padding-top: 0.75em;
+      }
 
-    .aproved {
-      background-color: green;
-    }
+      .main-title {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
 
-    .form-add {
-      background: #e3ecec;
-      padding-top: 0.75em;
-    }
+  <body>
+    <div class="container">
+      <div
+        class="hero center card-panel materialize-red darken-4 white-text z-depth-3"
+      >
+        <h1 class="materialize-red-text text-lighten-3">
+          Padrão de Projeto - MVC
+        </h1>
+      </div>
 
-    .main-title {
-      margin-bottom: 0;
-    }
-  </style>
-</head>
+      <h2 class="materialize-red-text text-lighten-2 underlined main-title">
+        Dados de Alunos
+      </h2>
 
-<body>
-  <div class="container">
-    <div class="hero center card-panel materialize-red darken-4 white-text z-depth-3">
-      <h1 class="materialize-red-text text-lighten-3">
-        Padrão de Projeto - MVC
-      </h1>
-    </div>
-
-    <h2 class="materialize-red-text text-lighten-2 underlined main-title">
-      Dados de Alunos
-    </h2> 
-
-    <form class="form-add">
-      <div class="row">
-        <div class="input-field col s8">
-          <input placeholder="Digite o nome do aluno" id="first_name" type="text" class="validate" />
-          <label for="first_name" class="active">Adicionar Aluno</label>
+      <form class="form-add">
+        <div class="row">
+          <div class="input-field col s8">
+            <input
+              placeholder="Digite o nome do aluno"
+              id="first_name"
+              type="text"
+              class="validate"
+            />
+            <label for="first_name" class="active">Adicionar Aluno</label>
+          </div>
+          <div class="input-field col s4">
+            <button class="btn-floating" type="submit" name="action">
+              <i class="material-icons">add</i>
+            </button>
+          </div>
         </div>
-        <div class="input-field col s4">
-          <button class="btn-floating" type="submit" name="action">
-            <i class="material-icons">add</i>
-          </button>
+      </form>
+
+      <div class="form-search">
+        <div class="row">
+          <div class="input-field col s8">
+            <input
+              placeholder="Digite o nome do aluno"
+              id="search_name"
+              type="text"
+              class="validate"
+            />
+            <label for="search_name" class="active">Pesquisar Aluno</label>
+          </div>
+          <div class="input-field col s4">
+          </div>
         </div>
       </div>
-    </form>
-    
-    <table data-table-alunos>
-      <thead> </thead>
-      <tbody> </tbody>
-    </table>
-  </div>
 
-  <script src="./js/calc.js"></script>
-  <script src="./js/models/Materia.modeol.js"></script>
-  <script src="./js/models/Aluno.model.js"></script>
-  <script src="./js/services/Materia.service.js"></script>
-  <script src="./js/services/Aluno.service.js"></script>
-  <script src="./js/views/Aluno.view.js"></script>
-  <script src="./js/controllers/Aluno.controller.js"></script>
-  <script src="js/app.js"></script>
-</body>
+      <table data-table-alunos>
+        <thead> </thead>
+        <tbody> </tbody>
+      </table>
+    </div>
 
+    <script src="./js/app.js"></script>
+  </body>
 </html>

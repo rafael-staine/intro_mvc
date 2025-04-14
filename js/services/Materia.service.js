@@ -1,42 +1,43 @@
-class MateriaService {
-    constructor() {
-        this.materias = []
-        this.updateListMateriasFromLocalStorage()
-    }
+import { MateriaModel } from '../models/Materia.model.js'
+export class MateriaService {
+	constructor() {
+		this.materias = []
+		this.updateListMateriasFromLocalStorage()
+	}
 
-    add(materia) {
-        if (!materia instanceof MateriaModel) {
-            throw new Error('A materia deve ser uma instância de MateriaModel')
-        }
-        this.materias.push(materia)
-        this.updateLocalStorage()
-    }
+	add(materia) {
+		if (!materia instanceof MateriaModel) {
+			throw new Error('A materia deve ser uma instância de MateriaModel')
+		}
+		this.materias.push(materia)
+		this.updateLocalStorage()
+	}
 
-    update(materia) {
-        return materia
-    }
+	update(materia) {
+		return materia
+	}
 
-    searchById(id) {
-        return this.materias.find(materia => materia._id === id)
-    }
- 
-    getAll() {
-        return this.materias
-    }
+	searchById(id) {
+		return this.materias.find(materia => materia._id === id)
+	}
 
-    updateLocalStorage() {
-        let materias = JSON.stringify(this.materias)
-        localStorage.setItem('materias', materias)
-    }
+	getAll() {
+		return this.materias
+	}
 
-    updateListMateriasFromLocalStorage() {
-        let local = localStorage.getItem('materias')
-        let materias = []
-        if (local) {
-            materias = JSON.parse(local)
-        }
-        materias.forEach(materia => {
-            this.add(new MateriaModel(materia))
-        });
-    }
+	updateLocalStorage() {
+		let materias = JSON.stringify(this.materias)
+		localStorage.setItem('materias', materias)
+	}
+
+	updateListMateriasFromLocalStorage() {
+		let local = localStorage.getItem('materias')
+		let materias = []
+		if (local) {
+			materias = JSON.parse(local)
+		}
+		materias.forEach(materia => {
+			this.add(new MateriaModel(materia))
+		})
+	}
 }
